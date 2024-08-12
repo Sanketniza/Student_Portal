@@ -50,6 +50,7 @@
 
   };
 
+
 //&  ----------------------------------------------------------------------------------------------------
 
 
@@ -78,7 +79,7 @@ export const login = async (req, res) => {
       
         if(!isPasswordMatch) {
             return res.status(400).json({
-                message: "Invalid credentials",
+                message: "Invalid password",
                 success: false
             });
         };
@@ -87,7 +88,7 @@ export const login = async (req, res) => {
 
             if(role !== user.role) {
                 return res.status(400).json({
-                    message: "Invalid credentials",
+                    message: "Invalid role",
                     success: false
                 });
             };
@@ -152,7 +153,7 @@ export const updateProfile = async (req, res) => {
         const { fullname , email , phoneNumber , bio , skills } = req.body;
         const file = req.file;
         
-        //^not necessary to update those all this fileds
+        //^not necessary to update those all this Fields
         // if(!fullname || !email || !phoneNumber || !bio || !skills) {
         //     return res.status(400).json({
         //         message: "Something went wrong (updateProfile controller)",
