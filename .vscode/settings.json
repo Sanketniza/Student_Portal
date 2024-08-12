@@ -2,5 +2,8 @@
     "CodeGPT.apiKey": "CodeGPT Plus Beta",
     "Codegeex.Chat.LanguagePreference": "English",
     "Codegeex.Comment.LanguagePreference": "English",
-    "Codegeex.SidebarUI.LanguagePreference": "English"
+    "Codegeex.SidebarUI.LanguagePreference": "English",
+    "cSpell.words": [
+        "perticular"
+    ]
 }

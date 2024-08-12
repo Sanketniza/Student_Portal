@@ -20,4 +20,4 @@ router.route('/get/:id').get(isAuthenticated, getJobById);
 router.route('/getadminjobs').get(isAuthenticated , getAdminJobs);
 
 
-export default router;
+export default router; 

@@ -7,6 +7,7 @@ import connectDB from "./util/db.js";
 import userRoute from "./routes/user.route.js";
 import companyRoute from "./routes/company.route.js";
 import jobRouter from "./routes/job.route.js";
+import application from "./routes/application.route.js";
 
 
 //? ------------------------------------------------------------------------------------------------------
@@ -46,6 +47,7 @@ app.use(cors(corsOptions));
 app.use('/api/v1/user', userRoute);
 app.use('/api/v1/company', companyRoute);
 app.use('/api/v1/job', jobRouter);
+app.use('/api/v1/application', application);
 
 //? ------------------------------------------------------------------------------------------------------
 
