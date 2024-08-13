@@ -7,14 +7,16 @@ import Job from '../models/job.models.js';
 
 export const applyJob = async (req, res) => {
     try {
+
         const userId = req.id;
         const jobId = req.params.id;
         if (!jobId) {
             return res.status(400).json({
                 message: "Job id is required.",
                 success: false
-            })
+            });
         };
+        
         // check if the user has already applied for the job
         const existingApplication = await Application.findOne({ job: jobId, applicant: userId });
 
@@ -23,7 +25,7 @@ export const applyJob = async (req, res) => {
                 message: "You have already applied for this jobs",
                 success: false
             });
-        }
+        };
 
         // check if the jobs exists
         const job = await Job.findById(jobId);
@@ -31,8 +33,9 @@ export const applyJob = async (req, res) => {
             return res.status(404).json({
                 message: "Job not found",
                 success: false
-            })
-        }
+            });
+        };
+
         // create a new application
         const newApplication = await Application.create({
             job:jobId,
@@ -44,7 +47,8 @@ export const applyJob = async (req, res) => {
         return res.status(201).json({
             message:"Job applied successfully.",
             success:true
-        })
+        });
+
     } catch (error) {
         console.log(error);
     }
