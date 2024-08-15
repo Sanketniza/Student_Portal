@@ -1,11 +1,33 @@
 
-import './App.css'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Login from './components/auth/Login'
+import Signup from './components/auth/Signup'
+import Home from './components/Home'
+import Navbar from './components/shared/Navbar'
+
+const appRouter = createBrowserRouter([
+
+    {
+       path: '/',
+       element: <Navbar />
+    },
+
+    {
+       path: '/login',
+       element: <Login />
+    },
+
+    {
+       path: '/signup',
+       element: <Signup />
+    },
+])
 
 function App() {
 
   return (
     <>
-       <h1 className='text-3xl font-bold text-red-500 underline'>sanket talekar</h1>
+       <RouterProvider router={appRouter} />
     </>
   )
 }
