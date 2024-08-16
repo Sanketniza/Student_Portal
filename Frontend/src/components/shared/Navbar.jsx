@@ -36,14 +36,8 @@ function Navbar() {
 									!user ? (
 										
 									   <div className="flex items-center gap-4">
-											Link
-											{/* <Link to="/login"> */}
-												<Button variant="outline" className="">LogIn</Button>
-											{/* </Link> */}
-											
-											{/* <Link to="/signup">/ */}
-												<Button className="bg-red-500">Signup</Button>
-											{/* </Link> */}
+											<Link to="/login"><Button variant="outline" className="">LogIn</Button></Link>
+											<Link to="/signup"><Button className="bg-red-500">Signup</Button></Link>
 										 </div>
 										 
 									) : (

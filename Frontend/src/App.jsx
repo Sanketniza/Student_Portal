@@ -3,13 +3,15 @@ import "./App.css";
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
 import Home from "./components/Home";
-import Navbar from "./components/shared/Navbar";
+import { Toaster } from "./components/ui/sonner";
+
+// &-----------------------------------------------------------------------------------------------
 
 const appRouter = createBrowserRouter([
   {
-     path: "/",
-     element: <Home />,
-  } ,
+    path: "/",
+    element: <Home />,
+  },
   {
     path: "/login",
     element: <Login />,
@@ -20,12 +22,13 @@ const appRouter = createBrowserRouter([
   },
 ]);
 
+
 function App() {
    return (
-     <>
-       <RouterProvider router={appRouter} />
-       {/* <Navbar/> */}
-     </>
+        <>
+          <RouterProvider router={appRouter} />
+          <Toaster />
+        </>
    );
 }
 

@@ -12,7 +12,7 @@
      try { 
        const { fullname , email , password , phoneNumber , role } = req.body;
         
-            if(!fullname || !email || !password || !phoneNumber) {
+            if(!fullname || !email || !password || !phoneNumber || !role) {
                    return res.status(400).json({
                     message: "All fields are required",
                     success: false
