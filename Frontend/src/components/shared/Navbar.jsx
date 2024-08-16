@@ -6,7 +6,7 @@ import {
 	PopoverTrigger,
 } from "@radix-ui/react-popover";
 import { LogOut, User2 } from "lucide-react"; // icon
-import Link from "react-router-dom"
+import { Link } from "react-router-dom";
 
 function Navbar() {
 	const user = false;
@@ -36,13 +36,14 @@ function Navbar() {
 									!user ? (
 										
 									   <div className="flex items-center gap-4">
-											<Link to="/login">
+											Link
+											{/* <Link to="/login"> */}
 												<Button variant="outline" className="">LogIn</Button>
-											</Link>
+											{/* </Link> */}
 											
-											<Link to="/signup">
+											{/* <Link to="/signup">/ */}
 												<Button className="bg-red-500">Signup</Button>
-											</Link>
+											{/* </Link> */}
 										 </div>
 										 
 									) : (
