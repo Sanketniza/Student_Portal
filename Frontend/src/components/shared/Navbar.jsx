@@ -13,6 +13,7 @@ function Navbar() {
 	
 	return (
 		<>
+		
 			<div className='flex items-center justify-between h-16 mx-auto px-5 max-w-7xl'>
 {/* //&------------------------------------------------------------------------------------------  */}
 

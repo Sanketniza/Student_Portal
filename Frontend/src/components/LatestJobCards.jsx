@@ -25,6 +25,6 @@ function LatestJobCards() {
             </div>
         </>
     )
-}
+};
 
-export default LatestJobCards
+export default LatestJobCards;

@@ -23,7 +23,7 @@ const category = [
     "UI/UX Designer",
     "Product Designer",
 
-]
+];
 
 function CategoryCarousel() {
   return (
@@ -47,6 +47,6 @@ function CategoryCarousel() {
             </div>
         </>
     )
-}
+};
 
 export default CategoryCarousel;

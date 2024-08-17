@@ -24,6 +24,6 @@ function LatestJobs() {
             </div>
         </>
     )
-}
+};
 
-export default LatestJobs
+export default LatestJobs;
