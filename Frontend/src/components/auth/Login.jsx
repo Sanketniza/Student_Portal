@@ -8,6 +8,10 @@ import { useState } from "react"
 import axios from "axios"
 import { USER_API_END_POINT } from "@/utils/API"
 import { toast } from "sonner"
+import { useDispatch, useSelector } from "react-redux"
+import { SetLoading } from "@/redux/authSlice"
+import { Loader2 } from "lucide-react"
+// import store from "@/redux/store"
 
 
 // &-----------------------------------------------------------------------------------------------
@@ -21,6 +25,8 @@ function Login() {
     });
 
 		const navigate = useNavigate();  // this is to redirect to home page after login
+		const dispatch = useDispatch(); // this is to redirect to home page after login.it use for redux toolkit store
+		const {loading} = useSelector(store => store.auth);
 
 
     const changeEventHandler = (event) => {
@@ -34,6 +40,7 @@ function Login() {
 	
 		
 		try{
+			dispatch(SetLoading(true));
 			const res = await axios.post(`${USER_API_END_POINT}/login`, input , {
 				
 				headers: {
@@ -53,6 +60,8 @@ function Login() {
 			    
 		}catch(error){
 			console.log(error);
+		} finally { // loading animation will stop here
+			dispatch(SetLoading(false));
 		}
 		
 	};
@@ -125,8 +134,13 @@ function Login() {
 				
 						 
 						 {/* <Link to="/"> */}
-							 <Button type="submit" variant="destructive" className="w-full mt-5"> LogIn</Button>
+							
 						 {/* </Link> */}
+
+						 {
+							loading ? <Button className="w-full mt-5"> <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please Wait </Button> : 
+							 <Button type="submit" variant="destructive" className="w-full mt-5"> LogIn</Button>
+						 }
 
 						 <p className="mt-5 text-center">Don`t have an account ? 
 							<Link to="/signup" className="mx-2 text-blue-600">Sign Up</Link>

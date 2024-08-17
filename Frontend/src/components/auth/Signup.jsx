@@ -8,6 +8,9 @@ import { useState } from "react"
 import axios from "axios"
 import { USER_API_END_POINT } from "@/utils/API"
 import { toast } from "sonner"
+import { useDispatch, useSelector } from "react-redux"
+import { SetLoading } from "@/redux/authSlice"
+import { Loader2 } from "lucide-react"
 
 //&-----------------------------------------------------------------------------------------------
 
@@ -22,6 +25,9 @@ function Signup() {
         phoneNumber: "",
         file: ""
     });
+
+	const {loading} = useSelector(store => store.auth);
+	const dispatch = useDispatch();
 	
 	const navigate = useNavigate();
 
@@ -54,6 +60,8 @@ function Signup() {
 
 		
 		try{
+
+			dispatch(SetLoading(true));
 			const res = await axios.post(`${USER_API_END_POINT}/register`, formData , {
 				
 				headers: {
@@ -70,6 +78,8 @@ function Signup() {
 		}catch(error){
 			console.log(error);
 			toast.error(error.response.data.message);
+		} finally { // loading animation will stop here
+			dispatch(SetLoading(false));
 		}
 		
 	};
@@ -168,9 +178,10 @@ function Signup() {
 							/>
 						</div>
 						 
-						 {/* <Link to="/" type="submit"> */}
-							 <Button type="submit" variant="destructive" className="w-full mt-5">Sign In</Button>
-						 {/* </Link> */}
+						{
+							loading ? <Button className="w-full mt-5"> <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please Wait </Button> : 
+							 <Button type="submit" variant="destructive" className="w-full mt-5"> SignUp</Button>
+						 }
 
 						 <p className="mt-5 text-center">Already have an account ? 
 							<Link to="/login" className="mx-2 text-blue-600">Log in</Link>
