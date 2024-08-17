@@ -21,19 +21,20 @@ const category = [
     "Data Engineer",
     "Software Engineer",
     "UI/UX Designer",
-    "Product Designer"
+    "Product Designer",
+
 ]
 
 function CategoryCarousel() {
   return (
         <>
-            <div>
-                <Carousel className="w-full max-w-xl mx-auto my-20">
-                    <CarouselContent>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <Carousel className="w-full max-w-xl mx-auto my-20 ">
+                    <CarouselContent >
                         {
                             category.map((cat, index) => (
                                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                                    <Button>
+                                    <Button variant="outline" className="w-full shadow-lg bg-slate-300 border rounded-full">
                                         {cat}
                                     </Button>
                                 </CarouselItem>
