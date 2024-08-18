@@ -14,22 +14,22 @@ function Navbar() {
 	return (
 		<>
 		
-			<div className='flex items-center justify-between h-16 mx-auto px-5 max-w-7xl'>
+			<div className='flex items-center justify-between h-16 px-5 mx-auto max-w-7xl'>
 {/* //&------------------------------------------------------------------------------------------  */}
 
 				<div className="">
 					<h1 className="text-3xl font-bold text-zinc-800">
-						Job <span className="text-red-500">Portal</span>{" "}
+						Student <span className="text-red-500">_Hub</span>{" "}
 					</h1>
 				</div>
 
 {/* //&------------------------------------------------------------------------------------------  */}
 
 				<div className="flex items-center gap-4">
-					<ul className="flex items-center space-x-4 font-medium text-zinc-800">
-						<li>Home</li>
-						<li>Job</li>
-						<li>Browser</li>
+					<ul className="flex items-center space-x-4 font-bold text-zinc-800">
+						<li><Link to="/">Home</Link></li>
+						<li><Link to="/jobs">Job</Link></li>
+						<li><Link to="/browser">Browser</Link></li>
 					</ul>
 							
 							{
