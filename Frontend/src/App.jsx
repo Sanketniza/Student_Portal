@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import { Toaster } from "./components/ui/sonner";
 import Jobs from "./components/Jobs";
 import Browser from "./components/Browser";
+import Profile from "./components/Profile";
 
 // &-----------------------------------------------------------------------------------------------
 
@@ -34,7 +35,12 @@ const appRouter = createBrowserRouter([
     path: "/browser",
     element: <Browser />,
   },
-  
+
+  {
+    path: "/profile",
+    element:<Profile/>
+  }
+
 ]);
 
 

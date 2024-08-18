@@ -35,58 +35,58 @@ function Navbar() {
 							
 							{
 						
-									!user ? (
+								!user ? (
+									
+									<div className="flex items-center gap-4">
+										<Link to="/login"><Button variant="outline" className="">LogIn</Button></Link>
+										<Link to="/signup"><Button className="bg-red-500">Signup</Button></Link>
+										</div>
 										
-									   <div className="flex items-center gap-4">
-											<Link to="/login"><Button variant="outline" className="">LogIn</Button></Link>
-											<Link to="/signup"><Button className="bg-red-500">Signup</Button></Link>
-										 </div>
-										 
-									) : (
-										<Popover >
-										<PopoverTrigger asChild>
+								) : (
+									<Popover >
+									<PopoverTrigger asChild>
+										<Avatar className="cursor-pointer">
+											<AvatarImage className="w-10 h-10 rounded-full "
+												src="https://github.com/shadcn.png"
+												alt="@shadcn"/>
+										</Avatar>
+									</PopoverTrigger>
+			
+									<PopoverContent className="p-4 mt-2 ">
+										
+												{/* //&------------------------------------------------------------------------------------------  */}
+										<div className="flex gap-4 space-y-2 ">
 											<Avatar className="cursor-pointer">
 												<AvatarImage className="w-10 h-10 rounded-full "
 													src="https://github.com/shadcn.png"
 													alt="@shadcn"/>
 											</Avatar>
-										</PopoverTrigger>
-				
-										<PopoverContent className="p-4 mt-2 ">
-											
-													{/* //&------------------------------------------------------------------------------------------  */}
-											<div className="flex gap-4 space-y-2 ">
-												<Avatar className="cursor-pointer">
-													<AvatarImage className="w-10 h-10 rounded-full "
-														src="https://github.com/shadcn.png"
-														alt="@shadcn"/>
-												</Avatar>
-											
-											<div>  
-												<h4 className="font-medium">how are you</h4>
-												<p className="text-sm text-muted-foreground">Lorem ipsum dolor sit amet consectetur.</p>
-											</div>
-										</div> 
 										
-											{/* //&------------------------------------------------------------------------------------------  */}
-											
-											<div className="flex flex-col mt-2 text-gray-700">
-												<div className="flex items-center gap-2 cursor-pointer w-fit">
-													< User2/>
-													<Button variant="link">View Profile</Button>
-												</div>
-												<div className="flex items-center gap-2 cursor-pointer w-fit">
-													<LogOut/>
-													<Button variant="link">Logout</Button> 
-												</div>
-											</div>
-											
-											{/* //&------------------------------------------------------------------------------------------  */}
+										<div>  
+											<h4 className="font-medium">how are you</h4>
+											<p className="text-sm text-muted-foreground">Lorem ipsum dolor sit amet consectetur.</p>
+										</div>
+									</div> 
+									
+										{/* //&------------------------------------------------------------------------------------------  */}
 										
-											
-										</PopoverContent>
-									</Popover>
-									)
+										<div className="flex flex-col mt-2 text-gray-700">
+											<div className="flex items-center gap-2 cursor-pointer w-fit">
+												< User2/>
+												<Button variant="link"> <Link to="/profile"> View Profile </Link></Button>
+											</div>
+											<div className="flex items-center gap-2 cursor-pointer w-fit">
+												<LogOut/>
+												<Button variant="link"><Link to="/login"> Logout </Link> </Button> 
+											</div>
+										</div>
+										
+										{/* //&------------------------------------------------------------------------------------------  */}
+									
+										
+									</PopoverContent>
+								</Popover>
+								)
 								
 							}
 			
