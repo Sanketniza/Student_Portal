@@ -5,11 +5,12 @@ import {
 	PopoverContent,
 	PopoverTrigger,
 } from "@radix-ui/react-popover";
-import { LogOut, User2 } from "lucide-react"; // icon
+import { LogOut, User2 } from "lucide-react"; // icon 
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Navbar() {
-	const user = false;
+	const  {user} = useSelector((store) => store.auth);
 	
 	return (
 		<>

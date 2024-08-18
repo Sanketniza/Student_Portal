@@ -9,7 +9,7 @@ import axios from "axios"
 import { USER_API_END_POINT } from "@/utils/API"
 import { toast } from "sonner"
 import { useDispatch, useSelector } from "react-redux"
-import { SetLoading } from "@/redux/authSlice"
+import { SetLoading, setUser } from "@/redux/authSlice"
 import { Loader2 } from "lucide-react"
 // import store from "@/redux/store"
 
@@ -50,6 +50,7 @@ function Login() {
 			});
 			
 			if(res.data.success) {
+				dispatch(setUser(res.data.user));
 				navigate("/");
 				toast.success(res.data.message);
 			}
@@ -131,14 +132,8 @@ function Login() {
 						  </div>
 						</RadioGroup>
 
-				
-						 
-						 {/* <Link to="/"> */}
-							
-						 {/* </Link> */}
-
 						 {
-							loading ? <Button className="w-full mt-5"> <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please Wait </Button> : 
+							loading ? <Button className="w-full mt-5"> <Loader2 className="w-4 h-4 mr-2 animate-spin" /> Please Wait </Button> : 
 							 <Button type="submit" variant="destructive" className="w-full mt-5"> LogIn</Button>
 						 }
 
