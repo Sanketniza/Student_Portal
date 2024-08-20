@@ -62,7 +62,7 @@ function Profile() {
 
                 <div className="my-5 ">
                     <h1 className="my-5 text-xl font-medium text-zinc-800">Skill</h1>
-                    <div className=''>
+                    <div className='cursor-pointer'>
                         {
                             Skill.length !== 0 ?  Skill.map((item , index) => <Badge key={index} className={"mr-2 text-blue-800 text-center shadow shadow-2xl bg-gray-300"} variant="ghost">{item}</Badge>) : <span className="text-sm">No Skill</span>
                         }
