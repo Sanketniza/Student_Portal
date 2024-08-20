@@ -1,7 +1,10 @@
 import { Badge } from "./ui/badge"
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "./ui/table"
 
+//&------------------------------------------------------------------------------------------
 
+
+//&------------------------------------------------------------------------------------------
 
 function AppliedJobTable() {
   return (
@@ -26,7 +29,7 @@ function AppliedJobTable() {
                                  <TableCell>17/06/2023</TableCell> 
                                  <TableCell>Web Developer</TableCell> 
                                  <TableCell>Amazon</TableCell> 
-                                 <TableCell className=""><Badge variant="outline" className="cursor-pointer  bg-zinc-300">Rejected</Badge></TableCell>
+                                 <TableCell className=""><Badge variant="outline" className="cursor-pointer bg-zinc-300">Rejected</Badge></TableCell>
                              </TableRow>
                            ))
                                 
