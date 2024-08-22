@@ -7,6 +7,7 @@ import { Toaster } from "./components/ui/sonner";
 import Jobs from "./components/Jobs";
 import Browser from "./components/Browser";
 import Profile from "./components/Profile";
+import JobDescription from "./components/JobDescription";
 
 // &-----------------------------------------------------------------------------------------------
 
@@ -29,6 +30,11 @@ const appRouter = createBrowserRouter([
   {
     path: "/jobs",
     element: <Jobs />,
+  },
+
+  {
+    path:"/description/:id",
+    element: <JobDescription />
   },
 
   {
