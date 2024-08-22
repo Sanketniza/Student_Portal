@@ -25,13 +25,13 @@ function AppliedJobTable() {
                     <TableBody>
                         {
                            [1,2,3,4,5].map((item , index) => (
-                             <TableRow key={index}>
+                              <TableRow key={index}>
                                  <TableCell>17/06/2023</TableCell> 
                                  <TableCell>Web Developer</TableCell> 
                                  <TableCell>Amazon</TableCell> 
                                  <TableCell className=""><Badge variant="outline" className="cursor-pointer bg-zinc-300">Rejected</Badge></TableCell>
-                             </TableRow>
-                           ))
+                              </TableRow>
+                            ))
                                 
                         }
                     </TableBody>

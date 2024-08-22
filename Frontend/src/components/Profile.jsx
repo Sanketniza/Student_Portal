@@ -1,7 +1,7 @@
 import { Avatar, AvatarImage } from '@radix-ui/react-avatar';
 import Navbar from './shared/Navbar'
 import { Button } from './ui/button';
-import { Contact, Mail, Pen } from 'lucide-react';
+import { Contact, GitBranch, GitBranchIcon, Github, Linkedin, Mail, Pen } from 'lucide-react';
 import { Badge } from './ui/badge';
 import { Label } from './ui/label';
 import AppliedJobTable from './AppliedJobTable';
@@ -23,7 +23,7 @@ function Profile() {
         <>
             <Navbar />
 
-            <div className="max-w-4xl mx-auto mt-5 bg-white border border-gray-200 shadow shadow-2xl p-7 rounded-2xl sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto mt-5 bg-white border border-gray-300 shadow shadow-2xl p-7 rounded-2xl sm:px-6 lg:px-8">
                 
                 <div className="flex items-center justify-between">  
                     <div className='flex items-center gap-5'>
@@ -56,6 +56,17 @@ function Profile() {
                         <Contact/>
                         <span>Phone No</span>
                     </div>
+                    
+                    <div className="flex items-center gap-2 mt-5 cursor-pointer">
+                        <Linkedin/>
+                        <span>LinkedIn</span>
+                    </div>
+                    
+                    <div className="flex items-center gap-2 mt-5 cursor-pointer">
+                        <GitBranchIcon/>
+                        <span>GitHub</span>
+                    </div>
+                    
                 </div>
 
 {/* //?------------------------------------------------------------------------------------------ */}
@@ -78,7 +89,7 @@ function Profile() {
                         isResume ? <a target='_blank' href="https://www.google.com" className='text-sm text-blue-500 hover:underline'>asd.json</a> : <span> Null </span>
                     }
                     
-                 </div>     
+                 </div>
                  
  {/* //?------------------------------------------------------------------------------------------ */}
  
@@ -87,7 +98,7 @@ function Profile() {
  {/* //~------------------------------------------------------------------------------------------ */}
 
 
-            <div className="max-w-4xl mx-auto my-20 bg-white border border-gray-200 shadow shadow-2xl p-7 rounded-2xl">
+            <div className="max-w-4xl mx-auto my-20 bg-white border border-gray-300 shadow shadow-2xl p-7 rounded-2xl">
                     <h1 className="px-4 text-xl font-medium text-zinc-800">Applied Jobs</h1>
                     
                     <AppliedJobTable />

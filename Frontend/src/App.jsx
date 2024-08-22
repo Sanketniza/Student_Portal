@@ -45,12 +45,12 @@ const appRouter = createBrowserRouter([
 
 
 function App() {
-   return (
+    return (
         <>
           <RouterProvider router={appRouter} />
           <Toaster />
         </>
-   );
+    );
 }
 
 export default App;
