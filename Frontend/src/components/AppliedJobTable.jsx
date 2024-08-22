@@ -9,7 +9,7 @@ import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Tabl
 function AppliedJobTable() {
   return (
         <>
-            <div className="p-4 ">
+            <div className="p-2 ">
                 <Table>
                     <TableCaption>A list of your Applied Jobs</TableCaption>
 

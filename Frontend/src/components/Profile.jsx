@@ -23,7 +23,7 @@ function Profile() {
         <>
             <Navbar />
 
-            <div className="mx-auto mt-5 bg-white border border-gray-200 shadow shadow-2xl p-7 rounded-2xl max-w-7xl sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto mt-5 bg-white border border-gray-200 shadow shadow-2xl p-7 rounded-2xl sm:px-6 lg:px-8">
                 
                 <div className="flex items-center justify-between">  
                     <div className='flex items-center gap-5'>
@@ -87,7 +87,7 @@ function Profile() {
  {/* //~------------------------------------------------------------------------------------------ */}
 
 
-            <div className="mx-auto my-20 bg-white border border-gray-200 shadow shadow-2xl max-w-7xl p-7 rounded-2xl">
+            <div className="max-w-4xl mx-auto my-20 bg-white border border-gray-200 shadow shadow-2xl p-7 rounded-2xl">
                     <h1 className="px-4 text-xl font-medium text-zinc-800">Applied Jobs</h1>
                     
                     <AppliedJobTable />
