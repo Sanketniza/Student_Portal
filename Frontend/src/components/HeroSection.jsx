@@ -4,11 +4,13 @@
 import { Search } from "lucide-react";
 import { Button } from "./ui/button";
 
+//&------------------------------------------------------------------------------------------
 
 function HeroSection() {
   return (
         <>
             <div className="text-center">
+
                 <div className="flex flex-col gap-5 my-10">
                     <span className="mx-auto py-2 px-4 rounded-full bg-gray-200 text-red-800 font-medium ">No.1 Job Hunt Website</span>
                     <h1 className="text-3xl font-bold text-zinc-800 py-2">Search , Apply & <br /> Get Your <span className="text-indigo-800"> Dream Job</span> </h1>
@@ -25,6 +27,7 @@ function HeroSection() {
                     </div>
 
                 </div>
+
             </div>
         </>
     )

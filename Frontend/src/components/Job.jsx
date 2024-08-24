@@ -1,3 +1,4 @@
+
 import { Button } from "./ui/button"
 import { Avatar, AvatarImage } from "@radix-ui/react-avatar"
 import { Badge } from "./ui/badge"
@@ -11,6 +12,7 @@ function Job() {
 
     const navigate = useNavigate();
     const jobId = "asdjktjej4jkv3k43";
+
   return (
         <>
             <div className="p-4 border border-gray-300 rounded-lg shadow shadow-2xl">
