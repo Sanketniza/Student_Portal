@@ -1,5 +1,6 @@
 import FilterCard from "./FilterCard"
 import Job from "./Job"
+import Footer from "./shared/Footer";
 import Navbar from "./shared/Navbar"
 
 
@@ -40,6 +41,7 @@ function Jobs() {
                     </div>
     
                 </div>
+
              </div>
         </>
     )

@@ -1,5 +1,5 @@
 import Job from "./Job";
-import Jobs from "./Jobs";
+import Footer from "./shared/Footer";
 import Navbar from "./shared/Navbar"
 
 //&------------------------------------------------------------------------------------------
@@ -19,13 +19,15 @@ function Browser() {
                     {
                         randomJobs.map((item) => {
                             return (
-                                <Job/>
+                                <Job key={item}/>
                             )
                         })
                     }
                 </div>
                 
             </div>
+
+            <Footer />
         </>
     )
 }
