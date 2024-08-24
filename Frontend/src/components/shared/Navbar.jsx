@@ -12,13 +12,16 @@ import { useSelector } from "react-redux";
 function Navbar() {
 	const  {user} = useSelector((store) => store.auth);
 	
-	return (
+return (
 		<>
 		
-			<div className='flex items-center justify-between h-16 px-5 mx-auto max-w-7xl'>
+			<div className='flex items-center justify-between h-16 px-5 mx-auto max-w-7xl '>
 {/* //&------------------------------------------------------------------------------------------  */}
 
-				<div className="">
+				<div className="flex items-center ">
+						<div className="flex ">
+							<img className="w-16 h-16 rounded-md bg-transparent" src="https://i.pinimg.com/564x/ee/b8/88/eeb8887be49a50318564804d44e353f8.jpg" alt="asdf" />
+						</div>
 					<h1 className="text-3xl font-bold text-zinc-800">
 						Student <span className="text-red-500">_Hub</span>{" "}
 					</h1>
@@ -84,8 +87,8 @@ function Navbar() {
 										{/* //&------------------------------------------------------------------------------------------  */}
 									
 										
-									</PopoverContent>
-								</Popover>
+									 </PopoverContent>
+								   </Popover>
 								)
 								
 							}

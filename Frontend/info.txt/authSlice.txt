@@ -1,0 +1,40 @@
+
+payload म्हणजे एखादं ऍक्शन (action) जेव्हा डिस्पॅच केलं जातं (जसं की setUser ऍक्शन), तेव्हा त्याच्याबरोबर काही डेटा पाठवला जातो. हाच डेटा payload म्हणून ओळखला जातो.
+
+उदाहरणार्थ, जर युजर लॉगिन करतो तेव्हा युजरची माहिती (जसं की नाव, ईमेल, इ.) पाठवली जाते, तीच माहिती payload असते. मग setUser reducer मध्ये, state.user = action.payload; या कोडमधून payload मध्ये आलेली माहिती user मध्ये सेट केली जाते. म्हणजेच user मध्ये आता त्या लॉगिन केलेल्या युजरचा डेटा ठेवला जातो.
+
+payload मुळात तो डेटा आहे जो ऍक्शनसोबत पाठवला जातो आणि ज्याचा उपयोग तुमच्या स्टेटमध्ये बदल करण्यासाठी होतो.
+
+⁡⁢⁢⁢----------------------------------------------------------------    ----------------------------------------------------------------⁡
+
+Slice क्या है?
+Redux में, "Slice" एक हिस्सा है आपके पूरे Redux स्टेट का। मान लीजिए कि आपका पूरा स्टेट एक बड़ा केक (Pie) है, तो एक Slice उस केक का एक टुकड़ा है, जो केवल एक खास हिस्से की जानकारी को संभालता है।
+
+Slice के घटक
+State:
+
+Slice में आपके स्टेट का एक हिस्सा होता है। यह स्टेट initialState में परिभाषित होता है। यह स्टेट खास उसी चीज़ के लिए होता है, जिसके लिए यह Slice जिम्मेदार है।
+Reducers:
+
+Reducers वो फ़ंक्शंस होते हैं जो यह बताते हैं कि इस Slice का स्टेट कब और कैसे बदलेगा। ये Reducers reducers ऑब्जेक्ट में होते हैं।
+Actions:
+
+हर Reducer के लिए एक Action ऑटोमैटिकली बनता है। Actions वो मैसेज होते हैं जो Redux स्टोर को भेजे जाते हैं, यह बताने के लिए कि स्टेट को कैसे अपडेट करना है।
+
+Slice कब बनाना चाहिए?
+जब भी आपको अपने एप्लिकेशन के स्टेट का कोई खास हिस्सा मैनेज करना हो, तब आप एक Slice बनाते हैं। हर Slice खुद में पूरा होता है, जिसमें उसका स्टेट और उसे मैनेज करने का लॉजिक होता है।
+
+
+⁡⁣⁣⁢----------------------------------------------------------------    ----------------------------------------------------------------⁡
+
+The useSelector hook in React-Redux is used to access data from the Redux store in a React component. Here's a simple explanation:
+
+What is Redux?
+Redux is a state management library that helps manage the state of your application in a predictable way. The state is stored in a central store, and any component in the app can access it.
+What is useSelector?
+useSelector is a hook provided by React-Redux that allows you to read data from the Redux store. When you use useSelector, you can select the part of the state you need in your component.
+Why Use useSelector?
+Accessing State: It helps your React components access the global state stored in Redux.
+Reactiveness: When the state changes, useSelector automatically makes your component re-render with the updated state.
+
+ 

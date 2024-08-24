@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const authSlice = createSlice({
     name: "auth",
+    
     initialState: {
         loading: false,
         user:null // this for when user login it will store user data here
@@ -13,6 +14,7 @@ const authSlice = createSlice({
         SetLoading: (state, action) => {
             state.loading = action.payload;
         },
+
         setUser: (state, action) => {
             state.user = action.payload; // this for when user login it will store user data here
         },
