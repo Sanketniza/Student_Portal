@@ -7,7 +7,7 @@ const Footer = () => {
          <footer className="w-7xl mx-auto">
           <div className=" container ">
 
-            <div className="flex flex-wrap mx-10">
+            <div className="flex flex-wrap mx-28">
               {/* Column 1 */}
               <div className=" md:w-1/4 px-4 mb-12 md:mb-0">
                 <h4 className="text-xl text-zinc-800 font-semibold mb-8 relative">
@@ -75,7 +75,7 @@ const Footer = () => {
             </div>
 
             <div>
-              <p className="text-gray-700 font-semibold text-center mt-12">© 2024 Student_Hub. All rights reserved.</p>
+              <p className="text-gray-700 font-semibold text-center my-10 border-t border-gray-300">© 2024 Student_Hub. All rights reserved.</p>
             </div>
 
           </div>

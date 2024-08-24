@@ -31,9 +31,9 @@ return (
 
 				<div className="flex items-center gap-4">
 					<ul className="flex items-center space-x-4 font-bold text-zinc-800">
-						<li><Link to="/">Home</Link></li>
-						<li><Link to="/jobs">Job</Link></li>
-						<li><Link to="/browser">Browser</Link></li>
+						<li className="hover:underline "><Link to="/">Home</Link></li>
+						<li className="hover:underline "><Link to="/jobs">Job</Link></li>
+						<li className="hover:underline "><Link to="/browser">Browser</Link></li>
 					</ul>
 							
 							{
@@ -48,7 +48,7 @@ return (
 								) : (
 									<Popover >
 									<PopoverTrigger asChild>
-										<Avatar className="cursor-pointer">
+										<Avatar className="cursor-pointer mx-5">
 											<AvatarImage className="w-10 h-10 rounded-full "
 												src="https://github.com/shadcn.png"
 												alt="@shadcn"/>
