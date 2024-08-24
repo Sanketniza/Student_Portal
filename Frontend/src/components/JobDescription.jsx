@@ -28,11 +28,13 @@ function JobDescription() {
                         </div>
                     </div>
                     
-                    <Button disabled={isApplied} className={`rounded-bg ${isApplied ? `bg-blue-800 text-white cursor-not-allowed hover:bg-blue-900` : ` bg-violet-600 text-white	hover:bg-violet-700`}` } variant="outline-none"> 
-                        {
-                            isApplied ? "All ready Applied" : "Apply Now"
-                        } 
-                    </Button>
+                    <div className="">
+                        <Button disabled={isApplied} className={`rounded-bg ${isApplied ? `bg-blue-800 text-white cursor-not-allowed hover:bg-blue-900` : ` bg-violet-600 text-white	hover:bg-violet-700`}` } variant="outline-none"> 
+                            {
+                                isApplied ? "All ready Applied" : "Apply Now"
+                            } 
+                        </Button>
+                    </div>
                 </div>
                 
         {/* //&`--------------------------- ---------------------------------------------------- */}
