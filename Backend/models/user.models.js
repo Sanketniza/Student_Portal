@@ -31,6 +31,14 @@ const userSchema = new mongoose.Schema({
           type: Number,
           required: true,
         },
+
+        github: {
+            type:String,
+        },
+
+        linkedin: {
+            type:String,
+        },
    
      role: {
           // user or admin

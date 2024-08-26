@@ -150,7 +150,10 @@ export const updateProfile = async (req, res) => {
     
     try {
         
-        const { fullname , email , phoneNumber , bio , skills } = req.body;
+        const { fullname , email , phoneNumber , bio , skills , github , linkedin } = req.body;
+        console.log(fullname , email , phoneNumber , bio , skills , github , linkedin);
+        console.log(req.body);
+
         const file = req.file;
         
         //^not necessary to update those all this Fields
@@ -179,9 +182,12 @@ export const updateProfile = async (req, res) => {
         // ^ update user profile
         if(fullname) user.fullname = fullname;
         if(email) user.email = email;
+        if(github) user.github = github;
+        if(linkedin) user.linkedin = linkedin;
         if(phoneNumber) user.phoneNumber = phoneNumber;
         if(bio) user.profile.bio = bio;
         if(skills) user.profile.skills = skillsArray;
+        // if(file) user.profile.resume = file.path;
         
 
         // resume comes later here ....
@@ -192,6 +198,8 @@ export const updateProfile = async (req, res) => {
             _id:user._id,
             fullname: user.fullname,
             email: user.email,
+            github: user.github,
+            linkedin: user.linkedin,
             role: user.role,
             phoneNumber: user.phoneNumber,
             profile: user.profile

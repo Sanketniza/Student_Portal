@@ -6,6 +6,8 @@ import { Contact, GitBranchIcon, Linkedin, Mail, Pen } from 'lucide-react';
 import { Badge } from './ui/badge';
 import { Label } from './ui/label';
 import AppliedJobTable from './AppliedJobTable';
+import UpdateProfileDialog from './UpdateProfileDialog';
+import { useState } from 'react';
 
 //&------------------------------------------------------------------------------------------
 
@@ -19,6 +21,7 @@ const Skill = [
 function Profile() {
 
     const isResume = true;
+    const[open , setOpen] = useState(false);
     
   return (
         <>
@@ -39,7 +42,7 @@ function Profile() {
                     </div>
 
                     <div className='mr-10'>
-                         <Button className="text-right bg-transparent border-zinc-700 text-zinc-500" variant="outline">
+                         <Button onClick={() => setOpen(true)} className="text-right bg-transparent border-zinc-700 text-zinc-500" variant="outline">
                             <Pen />
                         </Button>
                     </div>   
@@ -106,6 +109,8 @@ function Profile() {
             </div>
                 
  {/* //~------------------------------------------------------------------------------------------ */}
+                    
+         <UpdateProfileDialog open={open} setOpen={setOpen} />
 
         </>
     )
