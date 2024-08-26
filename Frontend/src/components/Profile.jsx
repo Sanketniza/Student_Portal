@@ -1,7 +1,8 @@
+
 import { Avatar, AvatarImage } from '@radix-ui/react-avatar';
 import Navbar from './shared/Navbar'
 import { Button } from './ui/button';
-import { Contact, GitBranch, GitBranchIcon, Github, Linkedin, Mail, Pen } from 'lucide-react';
+import { Contact, GitBranchIcon, Linkedin, Mail, Pen } from 'lucide-react';
 import { Badge } from './ui/badge';
 import { Label } from './ui/label';
 import AppliedJobTable from './AppliedJobTable';
@@ -13,7 +14,7 @@ const Skill = [
 ];
 
 //&------------------------------------------------------------------------------------------
-
+ 
 
 function Profile() {
 

@@ -28,26 +28,26 @@ function FilterCard() {
                 <hr className="h-1 my-2 bg-gray-300" />
                 
                 <div>
-                <RadioGroup >
-                {
-                    filterData.map((data, index) => (
-                        <div key={index}>
-                            <h1 className='font-medium font-bold'>{data.filterType}</h1>
-                            {
-                                data.array.map((item, idx) => {
-                                    const itemId = `id${index}-${idx}`
-                                    return (
-                                        <div className='flex items-center my-2 space-x-2' key={idx}>
-                                            <RadioGroupItem value={item} id={itemId} />
-                                            <Label htmlFor={itemId}>{item}</Label>
-                                        </div>
-                                    )
-                                })
-                            }
-                        </div>
-                    ))
-                }
-            </RadioGroup> 
+                    <RadioGroup >
+                        {
+                            filterData.map((data, index) => (
+                                <div key={index}>
+                                    <h1 className='font-medium font-bold'>{data.filterType}</h1>
+                                    {
+                                        data.array.map((item, idx) => {
+                                            const itemId = `id${index}-${idx}`
+                                            return (
+                                                <div className='flex items-center my-2 space-x-2' key={idx}>
+                                                    <RadioGroupItem value={item} id={itemId} />
+                                                    <Label htmlFor={itemId}>{item}</Label>
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </div>
+                            ))
+                        }
+                    </RadioGroup> 
                 </div>
                 
             </div>

@@ -32,9 +32,9 @@ function AppliedJobTable() {
                                  <TableCell className=""><Badge variant="outline" className="cursor-pointer bg-zinc-300">Rejected</Badge></TableCell>
                               </TableRow>
                             ))
-                                
                         }
                     </TableBody>
+                    
                 </Table>
             </div>
         </>
