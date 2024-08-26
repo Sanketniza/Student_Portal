@@ -8,12 +8,14 @@ import { Label } from './ui/label';
 import AppliedJobTable from './AppliedJobTable';
 import UpdateProfileDialog from './UpdateProfileDialog';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 //&------------------------------------------------------------------------------------------
 
-const Skill = [
-    "React", "Javascript", "CSS", "HTML", "NodeJS", "ExpressJS", "MongoDB", "MySQL"
-];
+// const Skill = [
+//     "React", "Javascript", "CSS", "HTML", "NodeJS", "ExpressJS", "MongoDB", "MySQL"
+// ];
 
 //&------------------------------------------------------------------------------------------
  
@@ -22,6 +24,7 @@ function Profile() {
 
     const isResume = true;
     const[open , setOpen] = useState(false);
+    const {user}  = useSelector((store) => store.auth);
     
   return (
         <>
@@ -36,8 +39,8 @@ function Profile() {
                         </Avatar>
         
                         <div>
-                           <h1 className="text-xl font-bold text-zinc-800">Full Name</h1>
-                           <p className="text-sm">lorem ipsum Hey sanket how are you </p>    
+                           <h1 className="text-xl font-bold text-zinc-800">{ user?.fullname }</h1>
+                           <p className="text-sm"> { user?.profile?.bio} </p>    
                         </div>  
                     </div>
 
@@ -53,22 +56,24 @@ function Profile() {
                 <div className="my-5">
                     <div className="flex items-center gap-2 mt-5 cursor-pointer">
                         <Mail/>
-                        <span>Email</span>
+                        <span>{ user?.email }</span>
                     </div>
                     
                     <div className="flex items-center gap-2 mt-5 cursor-pointer">
                         <Contact/>
-                        <span>Phone No</span>
+                        <span> { user?.phoneNumber }</span>
                     </div>
                     
                     <div className="flex items-center gap-2 mt-5 cursor-pointer">
                         <Linkedin/>
-                        <span>LinkedIn</span>
+                        <a href={user?.linkedin}>Linkedin Id</a>
+                        {/* <span> {user?.linkedin } </span> */}
                     </div>
                     
                     <div className="flex items-center gap-2 mt-5 cursor-pointer">
                         <GitBranchIcon/>
-                        <span>GitHub</span>
+                        <a href={user?.github}>GitHub Id</a>
+                        {/* <span> { user?.github } </span> */}
                     </div>
                     
                 </div>
@@ -79,7 +84,7 @@ function Profile() {
                     <h1 className="my-5 text-xl font-medium text-zinc-800">Skill</h1>
                     <div className='cursor-pointer'>
                         {
-                            Skill.length !== 0 ?  Skill.map((item , index) => <Badge key={index} className={"mr-2 text-blue-800 text-center shadow shadow-2xl bg-gray-300"} variant="ghost">{item}</Badge>) : <span className="text-sm">No Skill</span>
+                            user?.profile?.skills.length !== 0 ?  user?.profile?.skills.map((item , index) => <Badge key={index} className={"mr-2 text-blue-800 text-center shadow shadow-2xl bg-gray-300"} variant="ghost">{item}</Badge>) : <span className="text-sm">No Skill</span>
                         }
                     </div>
                 </div>
@@ -90,7 +95,7 @@ function Profile() {
                     <Label className="text-xl font-medium text-zinc-800">Resume </Label>
                     
                     {
-                        isResume ? <a target='_blank' href="https://www.google.com" className='text-sm text-blue-500 hover:underline'>asd.json</a> : <span> Null </span>
+                        isResume ? <a target='_blank' href={user?.profile?.resume} className='text-sm text-blue-500 hover:underline'>{user?.profile?.resume}</a> : <span> Null </span>
                     }
                     
                  </div>

@@ -146,14 +146,14 @@ export const logout = async (req, res) => {
 //&  ----------------------------------------------------------------------------------------------------
 
 
-export const updateProfile = async (req, res) => {
+/* export const updateProfile = async (req, res) => {
     
     try {
         
-        const { fullname , email , phoneNumber , bio , skills , github , linkedin } = req.body;
-        console.log(fullname , email , phoneNumber , bio , skills , github , linkedin);
+        const { fullname , email , phoneNumber , bio , skill , github , linkedin } = req.body;
+        console.log(fullname , email , phoneNumber , bio , skill , github , linkedin);
         console.log(req.body);
-
+        
         const file = req.file;
         
         //^not necessary to update those all this Fields
@@ -165,8 +165,8 @@ export const updateProfile = async (req, res) => {
         // };  
         
         let skillsArray;
-        if(skills) {
-           skillsArray = skills.split(",");
+        if(skill) {
+           skillsArray = skill.split(",");
         };
 
         const userId = req.id; // from middleware authentication
@@ -190,6 +190,9 @@ export const updateProfile = async (req, res) => {
         // if(file) user.profile.resume = file.path;
         
 
+        console.log("Updated skills:", user.profile.skills);
+
+
         // resume comes later here ....
         
         await user.save();
@@ -202,7 +205,8 @@ export const updateProfile = async (req, res) => {
             linkedin: user.linkedin,
             role: user.role,
             phoneNumber: user.phoneNumber,
-            profile: user.profile
+            profile: user.profile,
+            // file: user.profile.resume
         };
         
         
@@ -217,7 +221,67 @@ export const updateProfile = async (req, res) => {
         console.log(error.message);
     };
     
+} */;
+
+export const updateProfile = async (req, res) => {
+    try {
+        const { fullname, email, phoneNumber, bio, skill, github, linkedin } = req.body; // Changed from 'skills' to 'skill'
+        // console.log(fullname, email, phoneNumber, bio, skill, github, linkedin); // Logging 'skill'
+        // console.log(req.body);
+
+        const file = req.file;
+        
+        let skillsArray;
+        if (skill) { // Changed from 'skills' to 'skill'
+            skillsArray = skill.split(","); // Splitting 'skill' (singular) into an array
+        }
+
+        const userId = req.id; // from middleware authentication
+        
+        let user = await User.findById(userId);
+        if (!user) {
+            return res.status(400).json({
+                message: "User does not exist",
+                success: false
+            });
+        }
+
+        // Update user profile fields if provided
+        if (fullname) user.fullname = fullname;
+        if (email) user.email = email;
+        if (github) user.github = github;
+        if (linkedin) user.linkedin = linkedin;
+        if (phoneNumber) user.phoneNumber = phoneNumber;
+        if (bio) user.profile.bio = bio;
+        if (skillsArray) user.profile.skills = skillsArray; // Use 'skillsArray' to update 'skills'
+
+        // Saving the updated user profile
+        await user.save();
+
+        // Preparing the user data to return in the response
+        user = {
+            _id: user._id,
+            fullname: user.fullname,
+            email: user.email,
+            github: user.github,
+            linkedin: user.linkedin,
+            role: user.role,
+            phoneNumber: user.phoneNumber,
+            profile: user.profile
+        };
+
+        return res.status(200).json({
+            message: "Profile updated successfully",
+            user,
+            success: true
+        });
+        
+    } catch (error) {
+        console.log("Error is found in updateProfile controller");
+        console.log(error.message);
+    }
 };
+
 
 
 
