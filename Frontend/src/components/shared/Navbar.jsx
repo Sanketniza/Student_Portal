@@ -17,6 +17,7 @@ function Navbar() {
 	const  {user} = useSelector((store) => store.auth);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+	
 
 	const logoutHandler = async () => {
 
@@ -70,33 +71,34 @@ return (
 										
 								) : (
 									<Popover >
-									<PopoverTrigger asChild>
+									<PopoverTrigger asChild > 
 										<Avatar className="cursor-pointer mx-5">
 											<AvatarImage className="w-10 h-10 rounded-full "
 												src={user?.profile?.profilephoto}
 												alt="User Profile photo"/>
 										</Avatar>
 									</PopoverTrigger>
-			
-									<PopoverContent className="p-4 mt-2 ">
+			 
+									<PopoverContent className="p-4 mt-2 max-w-xs ">
 										
-												{/* //&------------------------------------------------------------------------------------------  */}
-										<div className="flex gap-4 space-y-2 ">
+										{/* //&------------------------------------------------------------------------------------------  */}
+
+										<div className="flex items-start gap-4 space-y-2 ml-5">
 											<Avatar className="cursor-pointer">
-												<AvatarImage className="w-10 h-10 rounded-full "
-													src={user?.profile?.profilephoto}
-													alt="User Profile photo"/>
+												<AvatarImage className="max-w-[40px] max-h-[40px] rounded-full "
+														src={user?.profile?.profilephoto}
+														alt="User Profile photo"/>
 											</Avatar>
 										
 										<div>  
-											<h4 className="font-medium">how are you</h4>
-											<p className="text-sm text-muted-foreground">Lorem ipsum dolor sit amet consectetur.</p>
+											<h4 className="font-medium"> { user?.fullname} </h4>
+											<p className="text-sm text-muted-foreground"> {user?.profile?.bio} </p>
 										</div>
 									</div> 
 									
 										{/* //&------------------------------------------------------------------------------------------  */}
 										
-										<div className="flex flex-col mt-2 text-gray-700">
+										<div className="flex flex-col mt-2 text-gray-700 mx-5">
 											<div className="flex items-center gap-2 cursor-pointer w-fit">
 												< User2/>
 												<Button variant="link"> <Link to="/profile"> View Profile </Link></Button>

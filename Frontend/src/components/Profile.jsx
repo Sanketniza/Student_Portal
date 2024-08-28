@@ -36,7 +36,9 @@ function Profile() {
                 <div className="flex items-center justify-between">  
                     <div className='flex items-center gap-5'>
                         <Avatar>
-                           <AvatarImage className='w-24 border-4 border-white' src="https://i.pinimg.com/564x/80/4e/51/804e518f3feec6345be49df95fac5bff.jpg" alt="@shadcn" />     
+                           <AvatarImage className='w-24 border-4 border-white rounded-full' 
+                                        src={user?.profile?.profilephoto}
+                                        alt="@shadcn" />     
                         </Avatar>
         
                         <div>
