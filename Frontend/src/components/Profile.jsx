@@ -95,8 +95,11 @@ function Profile() {
                     <Label className="text-xl font-medium text-zinc-800">Resume </Label>
                     
                     {
-                        isResume ? <a target='_blank' href={user?.profile?.resume} className='text-sm text-blue-500 hover:underline'>{user?.profile?.resume}</a> : <span> Null </span>
+                        isResume ? 
+                        <a target='_blank' href={user?.profile?.resume} className='text-sm text-blue-500 hover:underline'>View Resume</a> : 
+                        <span> No Resume Available </span>
                     }
+
                     
                  </div>
                  

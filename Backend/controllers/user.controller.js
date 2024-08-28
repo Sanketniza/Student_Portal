@@ -3,6 +3,7 @@
  import bcrypt from "bcrypt";
  import User from "../models/user.models.js";
  import jwt from "jsonwebtoken";
+import getDataUri from "../util/datauri.js";
 
 
 //&  ----------------------------------------------------------------------------------------------------
@@ -223,17 +224,22 @@ export const logout = async (req, res) => {
     
 } */;
 
-export const updateProfile = async (req, res) => {
+/* export const updateProfile = async (req, res) => {
     try {
-        const { fullname, email, phoneNumber, bio, skill, github, linkedin } = req.body; // Changed from 'skills' to 'skill'
-        // console.log(fullname, email, phoneNumber, bio, skill, github, linkedin); // Logging 'skill'
-        // console.log(req.body);
+        const { fullname, email, phoneNumber, bio, skill, github, linkedin } = req.body;
+        // console.log(fullname, email, phoneNumber, bio, skill, github, linkedin);
 
         const file = req.file;
-        
+
+        let cloudResponse;
+        if (file) {
+            const fileUri = getDataUri(file);
+            cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+        }
+
         let skillsArray;
-        if (skill) { // Changed from 'skills' to 'skill'
-            skillsArray = skill.split(","); // Splitting 'skill' (singular) into an array
+        if (skill) {
+            skillsArray = skill.split(",");
         }
 
         const userId = req.id; // from middleware authentication
@@ -253,12 +259,17 @@ export const updateProfile = async (req, res) => {
         if (linkedin) user.linkedin = linkedin;
         if (phoneNumber) user.phoneNumber = phoneNumber;
         if (bio) user.profile.bio = bio;
-        if (skillsArray) user.profile.skills = skillsArray; // Use 'skillsArray' to update 'skills'
+        if (skillsArray) user.profile.skills = skillsArray;
 
-        // Saving the updated user profile
+        if (file && cloudResponse) {
+            user.profile.resume = cloudResponse.secure_url; // Save the Cloudinary URL
+            user.profile.resumeOriginalName = file.originalname; // Save the original filename if needed
+        }
+
+        // Save the updated user profile
         await user.save();
 
-        // Preparing the user data to return in the response
+        // Prepare the user data to return in the response
         user = {
             _id: user._id,
             fullname: user.fullname,
@@ -279,6 +290,74 @@ export const updateProfile = async (req, res) => {
     } catch (error) {
         console.log("Error is found in updateProfile controller");
         console.log(error.message);
+        return res.status(500).json({
+            message: "Internal server error",
+            success: false
+        });
+    }
+}; */
+
+export const updateProfile = async (req, res) => {
+    try {
+        const { fullname, email, phoneNumber, bio, skills } = req.body;
+        const file = req.file;
+
+        let cloudResponse;
+        if (file) {
+            const fileUri = getDataUri(file);
+            cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+        }
+
+        let skillsArray;
+        if (skills) {
+            skillsArray = skills.split(",");
+        }
+
+        const userId = req.id; // middleware authentication
+        let user = await User.findById(userId);
+
+        if (!user) {
+            return res.status(400).json({
+                message: "User not found.",
+                success: false
+            });
+        }
+
+        // updating data
+        if (fullname) user.fullname = fullname;
+        if (email) user.email = email;
+        if (phoneNumber) user.phoneNumber = phoneNumber;
+        if (bio) user.profile.bio = bio;
+        if (skills) user.profile.skills = skillsArray;
+      
+        // resume comes later here...
+        if (cloudResponse) {
+            user.profile.resume = cloudResponse.secure_url; // save the cloudinary url
+            user.profile.resumeOriginalName = file.originalname; // Save the original file name
+        }
+
+        await user.save();
+
+        user = {
+            _id: user._id,
+            fullname: user.fullname,
+            email: user.email,
+            phoneNumber: user.phoneNumber,
+            role: user.role,
+            profile: user.profile
+        };
+
+        return res.status(200).json({
+            message: "Profile updated successfully.",
+            user,
+            success: true
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            message: "An error occurred while updating the profile.",
+            success: false
+        });
     }
 };
 

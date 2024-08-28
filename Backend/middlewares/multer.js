@@ -1,6 +1,5 @@
-
 import multer from "multer";
 
-const storage = multer.memoryStorage();
+const storage = multer.memoryStorage(); // Store files in memory as buffers
 
-export const singleUpload = multer({ storage }).single("file")
+export const singleUpload = multer({ storage }).single("file");
