@@ -4,6 +4,7 @@
  import User from "../models/user.models.js";
  import jwt from "jsonwebtoken";
 import getDataUri from "../util/datauri.js";
+import cloudinary from "../util/cloudinary.js";
 
 
 //&  ----------------------------------------------------------------------------------------------------
@@ -19,6 +20,10 @@ import getDataUri from "../util/datauri.js";
                     success: false
                 });
             };
+
+            const file = req.file;
+            const fileUri = getDataUri(file);
+            const cloudResponse = await cloudinary.uploader.upload(fileUri.content); 
            
           const user = await User.findOne({ email });
             if(user) {
@@ -35,7 +40,11 @@ import getDataUri from "../util/datauri.js";
                     email,
                     password: hashedPassword,
                     phoneNumber,
-                    role
+                    role,
+                    profile:{
+                        profilephoto: cloudResponse.secure_url,
+                        // cloudinary_id: cloudResponse.public_id
+                    }
                 });
 
                 return res.status(200).json({
@@ -46,7 +55,7 @@ import getDataUri from "../util/datauri.js";
             
     } catch (error) {
        console.log("error is found in register controller");
-       console.log(error.User.message);
+    //    console.log(error.User.message);
     }  
 
   };
@@ -131,7 +140,7 @@ export const logout = async (req, res) => {
     try {
         
         return res.status(200).cookie("token" , "" , {maxAge: 0}).json({
-            message: "User logged out successfully",
+            message: "User logout successfully",
             success: true
         });
         
@@ -224,12 +233,16 @@ export const logout = async (req, res) => {
     
 } */;
 
-/* export const updateProfile = async (req, res) => {
+export const updateProfile = async (req, res) => { // main file
     try {
-        const { fullname, email, phoneNumber, bio, skill, github, linkedin } = req.body;
+        const { fullname, email, phoneNumber, bio, skill, github, linkedin   } = req.body;
         // console.log(fullname, email, phoneNumber, bio, skill, github, linkedin);
 
         const file = req.file;
+        console.log(req.body);
+        console.log(file);
+
+        
 
         let cloudResponse;
         if (file) {
@@ -261,7 +274,7 @@ export const logout = async (req, res) => {
         if (bio) user.profile.bio = bio;
         if (skillsArray) user.profile.skills = skillsArray;
 
-        if (file && cloudResponse) {
+        if (cloudResponse) {
             user.profile.resume = cloudResponse.secure_url; // Save the Cloudinary URL
             user.profile.resumeOriginalName = file.originalname; // Save the original filename if needed
         }
@@ -295,11 +308,13 @@ export const logout = async (req, res) => {
             success: false
         });
     }
-}; */
+}; 
 
+
+/* 
 export const updateProfile = async (req, res) => {
     try {
-        const { fullname, email, phoneNumber, bio, skills } = req.body;
+        const { fullname, email, phoneNumber, bio, skills , github, linkedin } = req.body;
         const file = req.file;
 
         let cloudResponse;
@@ -327,6 +342,8 @@ export const updateProfile = async (req, res) => {
         if (fullname) user.fullname = fullname;
         if (email) user.email = email;
         if (phoneNumber) user.phoneNumber = phoneNumber;
+        if (github) user.github = github;
+        if (linkedin) user.linkedin = linkedin;
         if (bio) user.profile.bio = bio;
         if (skills) user.profile.skills = skillsArray;
       
@@ -342,6 +359,8 @@ export const updateProfile = async (req, res) => {
             _id: user._id,
             fullname: user.fullname,
             email: user.email,
+            github: user.github,
+            linkedin: user.linkedin,
             phoneNumber: user.phoneNumber,
             role: user.role,
             profile: user.profile
@@ -352,6 +371,7 @@ export const updateProfile = async (req, res) => {
             user,
             success: true
         });
+
     } catch (error) {
         console.log(error);
         return res.status(500).json({
@@ -359,7 +379,7 @@ export const updateProfile = async (req, res) => {
             success: false
         });
     }
-};
+}; */
 
 
 

@@ -20,9 +20,10 @@ import { Link } from 'react-router-dom';
 //&------------------------------------------------------------------------------------------
  
 
+const isResume = true;
+
 function Profile() {
 
-    const isResume = true;
     const[open , setOpen] = useState(false);
     const {user}  = useSelector((store) => store.auth);
     
@@ -96,8 +97,8 @@ function Profile() {
                     
                     {
                         isResume ? 
-                        <a target='_blank' href={user?.profile?.resume} className='text-sm text-blue-500 hover:underline'>View Resume</a> : 
-                        <span> No Resume Available </span>
+                        <a target='blank' href={user?.profile?.resume} className='text-blue-500 w-full hover:underline cursor-pointer'>{user?.profile?.resumeOriginalName}</a> 
+                        : <span>NA</span>
                     }
 
                     

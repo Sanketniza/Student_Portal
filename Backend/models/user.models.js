@@ -52,11 +52,11 @@ const userSchema = new mongoose.Schema({
           bio: { type: String },
           skills: [{ type: String }],
           resume: { type: String }, // url to resume file
+          resumeOriginalName:{type:String},
           profilephoto: {
               type: String,
               default: "",
             },
-          resumeOriginalName: { type: String },
           company: {
               type: mongoose.SchemaTypes.ObjectId,
               ref: "Company",

@@ -6,11 +6,34 @@ import {
 	PopoverTrigger,
 } from "@radix-ui/react-popover";
 import { LogOut, User2 } from "lucide-react"; // icon 
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { USER_API_END_POINT } from "@/utils/API";
+import axios from "axios";
+import { setUser } from "@/redux/authSlice";
+import { toast } from "sonner";
 
 function Navbar() {
 	const  {user} = useSelector((store) => store.auth);
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
+	const logoutHandler = async () => {
+
+		try{
+			const res = await axios.get(`${USER_API_END_POINT}/logout` , {
+				withCredentials: true});
+
+				if(res.data.success) {
+					dispatch(setUser(null));
+					navigate("/login");
+					toast.success(res.data.message);
+				}
+		}catch(error){
+			console.log(error)
+			toast.error(error.response.data.message);
+		}
+	}
 	
 return (
 		<>
@@ -50,8 +73,8 @@ return (
 									<PopoverTrigger asChild>
 										<Avatar className="cursor-pointer mx-5">
 											<AvatarImage className="w-10 h-10 rounded-full "
-												src="https://github.com/shadcn.png"
-												alt="@shadcn"/>
+												src={user?.profile?.profilephoto}
+												alt="User Profile photo"/>
 										</Avatar>
 									</PopoverTrigger>
 			
@@ -61,8 +84,8 @@ return (
 										<div className="flex gap-4 space-y-2 ">
 											<Avatar className="cursor-pointer">
 												<AvatarImage className="w-10 h-10 rounded-full "
-													src="https://github.com/shadcn.png"
-													alt="@shadcn"/>
+													src={user?.profile?.profilephoto}
+													alt="User Profile photo"/>
 											</Avatar>
 										
 										<div>  
@@ -80,7 +103,7 @@ return (
 											</div>
 											<div className="flex items-center gap-2 cursor-pointer w-fit">
 												<LogOut/>
-												<Button variant="link"><Link to="/login"> Logout </Link> </Button> 
+												<Button onClick={logoutHandler}  variant="link"> Logout </Button> 
 											</div>
 										</div>
 										

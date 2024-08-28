@@ -5,13 +5,11 @@ import path from "path";
 
 const getDataUri = (file) => {
     const parser = new DataUriParser();
-    console.log(file); // Check if file is defined and has the expected properties
-    const extName = path.extname(file?.originalname).toString(); // Using optional chaining to avoid errors if file is undefined
-    
+    const extName = path.extname(file.originalname).toString();
     return parser.format(extName, file.buffer);
 }
 
-export default getDataUri;;
+export default getDataUri;
 
 
  /* 
