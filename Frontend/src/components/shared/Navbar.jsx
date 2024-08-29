@@ -83,9 +83,9 @@ return (
 										
 										{/* //&------------------------------------------------------------------------------------------  */}
 
-										<div className="flex items-start gap-4 space-y-2 ml-5">
+										<div className="flex items-center gap-4 space-y-2 ml-5">
 											<Avatar className="cursor-pointer">
-												<AvatarImage className="max-w-[40px] max-h-[40px] rounded-full "
+												<AvatarImage className="max-w-[55px] max-h-[] rounded-full "
 														src={user?.profile?.profilephoto}
 														alt="User Profile photo"/>
 											</Avatar>

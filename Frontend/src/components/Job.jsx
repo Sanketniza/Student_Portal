@@ -14,12 +14,23 @@ function Job({job}) {
     const navigate = useNavigate();
     // const jobId = "asdjktjej4jkv3k43";
 
+    const daysAgoFunction = (mongodbTime) => {
+        // console.log(mongodbTime);
+        const createAt = new Date(mongodbTime);
+        const currentTIme = new Date();
+        const diff = currentTIme - createAt;
+        return Math.floor(diff / (1000 * 24* 60 * 60 ));
+         
+    }
+    
+
+
   return (
         <>
             <div className="p-4 border border-gray-300 rounded-lg shadow shadow-2xl">
                 
                 <div className="flex items-center justify-between">
-                    <p>2 days ago</p>
+                    <p> { daysAgoFunction(job?.createdAt) === 0 ? "Today" : `${daysAgoFunction(job?.createdAt)} days ago `}  </p>
                     <Button variant="outline" className="bg-gray-300 rounded-full" size="icon"> <Bookmark/> </Button>
                 </div>
     
