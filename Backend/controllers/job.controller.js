@@ -1,3 +1,4 @@
+
 import Job from "../models/job.models.js";
 
 
@@ -45,8 +46,6 @@ export const postJob = async (req, res) => {
 };
 
 // &  ----------------------------------------------------------------------------------------------------
-
-//for student 
 export const getAllJobs = async (req, res) => {
 
     try{
@@ -84,13 +83,16 @@ export const getAllJobs = async (req, res) => {
     }
 };
 
+// &  ----------------------------------------------------------------------------------------------------
 
 export const getJobById = async (req, res) => {
 
     try {
 
         const id = req.params.id;
-        const job = await Job.findById(id);
+        const job = await Job.findById(id).populate({
+            path:"applications",
+        })
             if(!job) {
                 return res.status(404).json({
                     message: "Job not found",
