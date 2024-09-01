@@ -121,4 +121,5 @@ export const updateCompany = async (req, res) => {
         console.log("error is found in updateCompany controller");
         console.log(error);
     };
+    
 };

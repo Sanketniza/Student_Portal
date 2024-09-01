@@ -4,11 +4,12 @@ import Navbar from "../shared/Navbar"
 import { Button } from "../ui/button"
 import { Label } from "../ui/label"
 import { Input } from "../ui/input"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { toast } from "sonner"
 import axios from "axios"
 import { COMPANY_API_END_POINT } from "@/utils/API"
 import { useNavigate, useParams } from "react-router-dom"
+import { useSelector } from "react-redux"
 
 {/* //*------------------------------------------------------------------------------------------ */}
 
@@ -22,6 +23,8 @@ function CompanySetup() {
         location:"",
         file:null
     });
+
+    const {singleCompany} = useSelector((store) => store.company);
 
     const changeEventHandler = (e) => {
         setInput({
@@ -65,6 +68,7 @@ function CompanySetup() {
             if(res.data.success) {
                 toast.success(res.data.message);
                 navigate(`/admin/companies/${param.id}`); // check
+                // navigate("/admin/companies");
             }
         }catch(e){
             console.log(e.message)
@@ -74,6 +78,17 @@ function CompanySetup() {
         }
 
     };
+
+    useEffect(() => {
+        setInput({
+            name: singleCompany.name || "",
+            description: singleCompany.description || "",
+            website: singleCompany.website || "",
+            location: singleCompany.location || "",
+            file: singleCompany.file || null,
+        })
+        
+    }, [singleCompany]);
 
   return (
         <>
