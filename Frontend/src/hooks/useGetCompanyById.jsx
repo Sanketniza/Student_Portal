@@ -20,11 +20,10 @@ function useGetCompanyById(companyId) {
             }catch(error){
                 console.log(error)
             }
-            
-        }
+        };
         
         fetchSingleCompany();
     }, [companyId , dispatch]);
-}
+};
 
 export default useGetCompanyById;

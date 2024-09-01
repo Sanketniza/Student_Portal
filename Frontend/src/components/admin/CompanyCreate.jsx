@@ -37,7 +37,7 @@ function CompanyCreate() {
         }catch(e){
             console.log(e.message);
         }
-    }
+    };
     
   return (
         <>

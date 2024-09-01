@@ -65,7 +65,7 @@ function CompanySetup() {
                 withCredentials: true
             });
 
-            if(res.data.success) {
+            if(res?.data?.success) {
                 toast.success(res.data.message);
                 navigate(`/admin/companies/${param.id}`); // check
                 // navigate("/admin/companies");
@@ -87,7 +87,7 @@ function CompanySetup() {
             location: singleCompany.location || "",
             file: singleCompany.file || null,
         })
-        
+
     }, [singleCompany]);
 
   return (
