@@ -54,9 +54,11 @@ export const getCompany = async (req, res) => {
         };
 
         return res.status(200).json({
+            message: "Company found successfully",
             companies,
             success: true
-        })
+        });
+
     } catch (error) {
         console.log("error is found in getCompany controller");
         console.log(error);
@@ -80,6 +82,7 @@ export const getCompanyById = async (req, res) => {
         };
 
         return res.status(200).json({
+            message: "Company found successfully",
             company,
             success: true
         });
@@ -109,6 +112,7 @@ export const updateCompany = async (req, res) => {
             };   
 
             return res.status(200).json({
+                message: "Company updated successfully.",
                 company,
                 success: true
             });

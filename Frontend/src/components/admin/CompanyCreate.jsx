@@ -6,17 +6,33 @@ import { Label } from "../ui/label"
 import axios from "axios"
 import { COMPANY_API_END_POINT } from "@/utils/API"
 import { useState } from "react"
+import { toast } from "sonner"
+import { useDispatch } from "react-redux"
+import { setSingleCompany } from "@/redux/companySlice"
 
 function CompanyCreate() {
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [companyName , setCompanyName] = useState();
 
     const registerNewCompany = async() => {
         
         try{ 
             
-           const res = await axios.post(`${COMPANY_API_END_POINT}/register` , )
+           const res = await axios.post(`${COMPANY_API_END_POINT}/register` , { companyName} , {
+               headers: {
+                   "Content-Type": "application/json"
+                },
+                withCredentials: true
+            })
+
+            if(res?.data?.success) {
+                dispatch(setSingleCompany(res.data.company));
+                toast.success(res.data.message);
+                const companyId = res?.data?.company?._id;
+                navigate(`/admin/companies/${companyId}`);
+            }
            
         }catch(e){
             console.log(e.message);
@@ -43,6 +59,7 @@ function CompanyCreate() {
                             type="text"
                             className="w-full my-3 border-2 rounded shadow shadow-xl"
                             placeholder="Student_Hub , Google , Microsoft , etc"
+                            onChange={(e) => setCompanyName(e.target.value)}
                         />
                     </div>
                     
