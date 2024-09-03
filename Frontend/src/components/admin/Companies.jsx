@@ -3,17 +3,19 @@ import Navbar from "../shared/Navbar";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import CompaniesTable from "./CompaniesTable";
+import useGetAllCompanies from "@/hooks/useGetAllCompanies";
 
 
 function Companies() {
 
+    useGetAllCompanies();
     const navigate = useNavigate();
     
   return (
        <>
             <Navbar />
 
-            <div className="max-w-6xl mx-auto my-10 sm:px-6 lg:px-8 ">
+            <div className="max-w-4xl mx-auto my-10 sm:px-6 lg:px-8 ">
      
      {/* //&------------------------------------------------------------------------------------------ */}
      

@@ -38,45 +38,37 @@ function CompanySetup() {
     }
 
     const [loading , setLoading] = useState(false);
-    const param = useParams();
+    const params = useParams();
     const navigate = useNavigate();
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        console.log(input)
-
         const formData = new FormData();
-        formData.append("name" , input.name);
-        formData.append("description" , input.description);
-        formData.append("website" , input.website);
-        formData.append("location" , input.location);
-
-        if(input.file) {
-            formData.append("file" , input.file);
+        formData.append("name", input.name);
+        formData.append("description", input.description);
+        formData.append("website", input.website);
+        formData.append("location", input.location);
+        if (input.file) {
+            formData.append("file", input.file);
         }
-
         try {
-
             setLoading(true);
-            const res = await axios.post(`${COMPANY_API_END_POINT}/update /${param.id}` , formData , {
+            const res = await axios.put(`${COMPANY_API_END_POINT}/update/${params.id}`, formData, {
                 headers: {
-                    "Content-Type": "multipart/form-data"
+                    'Content-Type': 'multipart/form-data'
                 },
                 withCredentials: true
             });
-
-            if(res?.data?.success) {
+            if (res.data.success) {
                 toast.success(res.data.message);
-                navigate(`/admin/companies/${param.id}`); // check
-                // navigate("/admin/companies");
+                navigate("/admin/companies");
             }
-        }catch(e){
-            console.log(e.message)
-            toast.error(e.response.data.message);
+        } catch (error) {
+            console.log(error);
+            toast.error(error.response.data.message);
         } finally {
             setLoading(false);
         }
-
     };
 
     useEffect(() => {
@@ -94,7 +86,7 @@ function CompanySetup() {
         <>
            <Navbar/>
 
-           <div className="max-w-xl mx-auto my-10 sm:px-6 lg:px-8 ">
+           <div className="max-w-2xl mx-auto my-10 sm:px-6 lg:px-8 ">
               
 {/* //?------------------------------------------------------------------------------------------ */}
 
@@ -103,8 +95,8 @@ function CompanySetup() {
                 {/* //&------------------------------------------------------------------------------------------ */}
 
                         <div className="flex items-center gap-10 pointer-cursor ">
-                            <div className=" shadow shadow-xl border-5 border-zinc-800 rounded ">
-                                <Button onClick={() => navigate("/admin/companies")} variant="outline" className="flex items-center gap-1 font-semibold  hover:bg-zinc-300 outline outline-offset-2 outline-1">
+                            <div className="rounded shadow shadow-xl border-5 border-zinc-800">
+                                <Button onClick={() => navigate("/admin/companies")} variant="outline" className="flex items-center gap-1 font-semibold hover:bg-zinc-300 outline outline-offset-2 outline-1">
                                     <ArrowLeft/>
                                     <span>Back</span>
                                 </Button>
@@ -115,7 +107,7 @@ function CompanySetup() {
 
                 {/* //&------------------------------------------------------------------------------------------ */}
 
-                      <div className="mx-5 my-10 grid grid-cols-2 gap-10"> 
+                      <div className="grid grid-cols-2 gap-10 mx-5 my-10"> 
                         <div>
                             <Label className="mt-5"> Company Name </Label>
                             <Input

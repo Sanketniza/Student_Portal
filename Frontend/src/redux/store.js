@@ -5,7 +5,6 @@ import jobSlice from "./jobSlice";
 
 
 import {
-  persistStore,
   persistReducer,
   FLUSH,
   REHYDRATE,

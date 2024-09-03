@@ -1,5 +1,7 @@
 
 import Company from "../models/company.models.js";
+import getDataUri from "../util/datauri.js";
+import cloudinary from "../util/cloudinary.js"
 
 
 //&  ----------------------------------------------------------------------------------------------------
@@ -97,10 +99,14 @@ export const updateCompany = async (req, res) => {
 
         const {name , description , website , location} = req.body;
         const file = req.file;
+        // console.log(name , description , website , location , file);
 
          // here cloudinary is used for uploading image   
+         const fileUri = getDataUri(file);
+         const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+         const logo = cloudResponse.secure_url;
          
-        const updateData = {name , description , website , location};
+        const updateData = {name , description , website , location , logo};
 
         const company = await Company.findByIdAndUpdate(req.params.id, updateData , {new: true});
 
@@ -112,7 +118,7 @@ export const updateCompany = async (req, res) => {
             };   
 
             return res.status(200).json({
-                message: "Company updated successfully.",
+                message: "Company Info updated successfully.",
                 company,
                 success: true
             });
