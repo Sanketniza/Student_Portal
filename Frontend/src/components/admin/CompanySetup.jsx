@@ -48,21 +48,27 @@ function CompanySetup() {
         formData.append("description", input.description);
         formData.append("website", input.website);
         formData.append("location", input.location);
+        
         if (input.file) {
             formData.append("file", input.file);
         }
+
         try {
+
             setLoading(true);
+
             const res = await axios.put(`${COMPANY_API_END_POINT}/update/${params.id}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 },
                 withCredentials: true
             });
+
             if (res.data.success) {
                 toast.success(res.data.message);
                 navigate("/admin/companies");
             }
+
         } catch (error) {
             console.log(error);
             toast.error(error.response.data.message);
