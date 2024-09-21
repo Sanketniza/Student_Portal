@@ -7,14 +7,20 @@ import cloudinary from "../util/cloudinary.js"
 //&  ----------------------------------------------------------------------------------------------------
 
  export const registerCompany = async (req, res) => {
+
+    //todo: register company 
     try {
         const { companyName } = req.body;
+
+        // check if company name is provided
         if (!companyName) {
             return res.status(400).json({
                 message: "Company name is required.",
                 success: false
             });
         }
+
+        // check if company already exists
         let company = await Company.findOne({ name: companyName });
         if (company) {
             return res.status(400).json({
@@ -22,6 +28,8 @@ import cloudinary from "../util/cloudinary.js"
                 success: false
             });
         };
+
+        // create company
         company = await Company.create({
             name: companyName,
             userId: req.id
