@@ -30,12 +30,12 @@ function CompanySetup() {
         setInput({
             ...input, [e.target.name]: e.target.value
         })
-    }
+    };
 
     const changeFileHandler = (e) => {
         const file = e.target.files?.[0];
         setInput({...input, file});
-    }
+    };
 
     const [loading , setLoading] = useState(false);
     const params = useParams();
@@ -70,6 +70,7 @@ function CompanySetup() {
             }
 
         } catch (error) {
+            console.log("error is found at company setup page frontend side");
             console.log(error);
             toast.error(error.response.data.message);
         } finally {
@@ -189,4 +190,4 @@ function CompanySetup() {
     )
 }
 
-export default CompanySetup
+export default CompanySetup;

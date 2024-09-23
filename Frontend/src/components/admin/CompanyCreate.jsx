@@ -32,7 +32,7 @@ function CompanyCreate() {
                 toast.success(res.data.message);
                 const companyId = res?.data?.company?._id;
                 navigate(`/admin/companies/${companyId}`);
-            }
+            };
            
         }catch(e){
             console.log(e.message);
