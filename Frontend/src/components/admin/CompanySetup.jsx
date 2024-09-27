@@ -10,11 +10,15 @@ import axios from "axios"
 import { COMPANY_API_END_POINT } from "@/utils/API"
 import { useNavigate, useParams } from "react-router-dom"
 import { useSelector } from "react-redux"
+import useGetCompanyById from "@/hooks/useGetCompanyById"
 
 {/* //*------------------------------------------------------------------------------------------ */}
 
 
 function CompanySetup() {
+    
+    const params = useParams();
+    useGetCompanyById(params.id);
 
     const [input , setInput] = useState({
         name:"",
@@ -38,7 +42,6 @@ function CompanySetup() {
     };
 
     const [loading , setLoading] = useState(false);
-    const params = useParams();
     const navigate = useNavigate();
 
     const submitHandler = async (e) => {

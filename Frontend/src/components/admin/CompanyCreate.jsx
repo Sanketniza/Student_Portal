@@ -26,6 +26,7 @@ function CompanyCreate() {
                 },
                 withCredentials: true
             });
+            
 
             if(res?.data?.success) {
                 dispatch(setSingleCompany(res.data.company));
