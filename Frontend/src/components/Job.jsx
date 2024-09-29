@@ -37,7 +37,7 @@ function Job({job}) {
                 <div className="flex items-center gap-2">
                      <Button variant="outline" className="rounded-full bg-gray-00" size="icon">
                          <Avatar className="bg-gray-300 cursor-pointer">
-                             <AvatarImage src="https://i.pinimg.com/564x/80/4e/51/804e518f3feec6345be49df95fac5bff.jpg" alt="@shadcn" />
+                             <AvatarImage src={job?.company?.logo} alt="@shadcn" />
                          </Avatar>
                      </Button>
 

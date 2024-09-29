@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@radix-ui/react-select";
+import { Loader2 } from "lucide-react";
 
 const companyArray = [];
 function PostJob() {
@@ -47,6 +48,8 @@ function PostJob() {
             }
 
         }catch(error) {
+            console.log("error is found at post job page frontend side");
+            toast.error(error.response.data.message);
             console.log(error);
         }finally {
             setLoading(false);
@@ -167,33 +170,40 @@ function PostJob() {
                         </div>
 
                         {
-                            companies.length === 0 && (
+                            companies.length > 0 && (
                                 <Select onValueChange={selectChangeHandler}>
-                                <SelectTrigger className="w-[180px]">
-                                  <SelectValue placeholder="select a company" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                  <SelectGroup>
-                                    {
-                                        companies.map((company) => {
-                                            return (
-                                               <SelectItem key={company._id} value={company.name.toLowerCase()}> {company.name} </SelectItem>
-                                            )
-                                        })
-                                    }
-                                  </SelectGroup>
-                                </SelectContent>
-                              </Select>
+                                    <SelectTrigger className="w-[180px]">
+                                        <SelectValue placeholder="Select a Company" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectGroup>
+                                            {
+                                                companies.map((company) => {
+                                                    return (
+                                                        <SelectItem key={company._id} value={company?.name?.toLowerCase()}>{company.name}</SelectItem>
+                                                    )
+                                                })
+                                            }
+
+                                        </SelectGroup>
+                                    </SelectContent>
+                                </Select>
                             )
                         }
 
                     </div>
 
                     <div>
-                       <Button type="submit" variant="" className="w-full mt-5"> post new job</Button>
+                  
+                        {
+							loading ? <Button className="w-full mt-5 "> <Loader2 className="w-4 h-4 mr-2 animate-spin" /> post new job </Button> : 
+                            <Button type="submit" variant="destructive" className="w-full mt-5"> Update</Button>
+                        }
+
                        {
                         companies.length === 0 && <p className="text-red-500 text-sm font-bold text-center my-3"> Please register your company first</p>
                        }
+
                     </div>
 
                 </form>
