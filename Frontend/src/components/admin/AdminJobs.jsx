@@ -5,9 +5,9 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setSearchCompanyByText } from "@/redux/companySlice";
 import AdminJobsTable from "./AdminJobsTable";
 import useGetAllAdminJobs from "@/hooks/useGetAllAdminJobs";
+import { setSearchJobByText } from "@/redux/jobSlice";
 
 
 function AdminJobs() {
@@ -19,7 +19,7 @@ function AdminJobs() {
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        dispatch(setSearchCompanyByText(input));
+        dispatch(setSearchJobByText(input));
     },[dispatch,input]); // take input, [dispatch, input]
     
   return (
@@ -33,10 +33,10 @@ function AdminJobs() {
                 <div className="flex items-center justify-between gap-4 mx-5">
                     <Input
                         className="border-2 rounded shadow shadow-xl outline-none border-zinc-400 w-fit"
-                        placeholder="filter by name"
+                        placeholder="filter by name or role"
                         onChange={(e)=>setInput(e.target.value)}
                     />
-                    <Button onClick={() => navigate("/admin/companies/create")} > New Jobs </Button>
+                    <Button onClick={() => navigate("/admin/jobs/create")} > New Jobs </Button>
                 </div>
                 
             {/* //?------------------------------------------------------------------------------------------ */}

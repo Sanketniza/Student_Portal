@@ -21,7 +21,7 @@ function Home() {
     if(user?.role === "hr") {
       navigate("/admin/companies")
     }
-  },[]);
+  });
 
   return (
     <>

@@ -9,24 +9,23 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const AdminJobsTable = () => {
-    const { companies, searchCompanyByText } = useSelector(store => store.company);
-   const {allAdminJobs} = useSelector(store => store.job);
+   const {allAdminJobs , searchJobByText} = useSelector(store => store.job);
     const [filterJobs, setFilterJobs] = useState(allAdminJobs);
     const navigate = useNavigate();
 
        useEffect(()=>{
-        const filteredCompany = allAdminJobs.length >= 0 && allAdminJobs.filter((job)=>{
+        const filteredJobs = allAdminJobs.length >= 0 && allAdminJobs.filter((job)=>{
             
-            if(!searchCompanyByText){
+            if(!searchJobByText){
                 return true
             }
                 
-            return company?.name?.toLowerCase().includes(searchCompanyByText.toLowerCase());
+            return job?.title?.toLowerCase().includes(searchJobByText.toLowerCase()) || job?.company?.name?.toLowerCase().includes(searchJobByText.toLowerCase());
 
         }); 
-        setFilterJobs(filteredCompany);
+        setFilterJobs(filteredJobs);
         
-    },[companies,searchCompanyByText])
+    },[allAdminJobs,searchJobByText])
 
     return (
         <>
@@ -45,8 +44,9 @@ const AdminJobsTable = () => {
                         filterJobs?.map((job) => (
                             <tr key={job._id}>
                               
-                                <TableCell>{job.name}</TableCell>
-                                <TableCell>{job.createdAt.split("T")[0]}</TableCell>
+                                <TableCell>{job?.company?.name}</TableCell>
+                                <TableCell>{job?.title}</TableCell>
+                                <TableCell>{job?.createdAt.split("T")[0]}</TableCell>
                                 <TableCell className="text-right cursor-pointer">
                                     <Popover>
                                         <PopoverTrigger><MoreHorizontal /></PopoverTrigger>
