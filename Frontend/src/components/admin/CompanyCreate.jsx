@@ -26,6 +26,9 @@ function CompanyCreate() {
                 },
                 withCredentials: true
             });
+
+            console.log(res.data);
+            console.log("sanket ",res.data);
             
 
             if(res?.data?.success) {
@@ -36,6 +39,9 @@ function CompanyCreate() {
             };
            
         }catch(e){
+            console.log("error is found at post job page frontend side");
+            toast.error("error is found at post job page frontend side");
+            toast.error(e.response.data.message);
             console.log(e.message);
         }
     };

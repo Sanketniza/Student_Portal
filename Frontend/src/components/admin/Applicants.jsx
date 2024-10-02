@@ -22,44 +22,44 @@ const Applicants = () => {
     const {applicants} = useSelector((state) => state.application);
 
 
-    useEffect(() => {  // to fetch the the data 3
-       const fetchApplicants = async () => {
+    // useEffect(() => {  // to fetch the the data 3
+    //    const fetchApplicants = async () => {
 
-            try{
+    //         try{
 
-                const res = await axios.get(`${APPLICATION_API_END_POINT}/${params.id}/applicants` , { 
-                    withCredentials: true
-                });
+    //             const res = await axios.get(`${APPLICATION_API_END_POINT}/${params.id}/applicants` , { 
+    //                 withCredentials: true
+    //             });
 
-                console.log(res.data);
-                console.log("sanket ",res.data);
-               dispatch(setApplications(res.data.job));
+    //             console.log(res.data);
+    //             console.log("sanket ",res.data);
+    //            dispatch(setApplications(res.data.job));
                 
-            }catch(e){
-                console.log("error is found at applicant page frontend side");
-                toast.error("error is found at applicant page frontend side");
-                toast.error(e.message);
-                console.log(e);
-            }
-        }
-
-        fetchApplicants();
-       
-    });
-
-    // useEffect(() => {
-    //     const fetchAllApplicants = async () => {
-    //         try {
-    //             const res = await axios.get(`${APPLICATION_API_END_POINT}/${params.id}/applicants`, { withCredentials: true });
-    //             dispatch(setApplications(res.data.job));
-    //         } catch (error) {
-    //             toast.error(error.response.data.message);
-    //             console.log("error is found at applicants page frontend side");
-    //             console.log(error);
+    //         }catch(e){
+    //             console.log("error is found at applicant page frontend side");
+    //             toast.error("error is found at applicant page frontend side");
+    //             toast.error(e.message);
+    //             console.log(e);
     //         }
     //     }
-    //     fetchAllApplicants();
-    // }, []);
+
+    //     fetchApplicants();
+       
+    // });
+
+    useEffect(() => {
+        const fetchAllApplicants = async () => {
+            try {
+                const res = await axios.get(`${APPLICATION_API_END_POINT}/${params.id}/applicants`, { withCredentials: true });
+                dispatch(setApplications(res.data.job));
+            } catch (error) {
+                toast.error(error.response.data.message);
+                console.log("error is found at applicants page frontend side");
+                console.log(error);
+            }
+        }
+        fetchAllApplicants();
+    }, []);
 
   return (
          <>

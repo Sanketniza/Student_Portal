@@ -7,6 +7,7 @@ import useGetAllCompanies from "@/hooks/useGetAllCompanies";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setSearchCompanyByText } from "@/redux/companySlice";
+import { toast } from "sonner";
 
 
 function Companies() {
@@ -18,7 +19,10 @@ function Companies() {
 
     useEffect(()=>{
         dispatch(setSearchCompanyByText(input));
-    },[ input]); // take input, [dispatch, input]
+        // console.log(input);
+        // console.log("sanket ",input);
+        toast.error("error is found at companies page frontend side");
+    },[  dispatch,input ]); // take input, [dispatch, input]
     
   return (
        <>

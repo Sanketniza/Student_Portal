@@ -32,7 +32,7 @@ export const applyJob = async (req, res) => {
         const job = await Job.findById(jobId);
         if (!job) {
             return res.status(404).json({
-                message: "Job not found",
+                message: "Job not found .",
                 success: false
             });
         };
@@ -51,6 +51,7 @@ export const applyJob = async (req, res) => {
         });
 
     } catch (error) {
+        console.log("error is found in application controller applyJob");
         console.log(error);
     }
 };
@@ -99,34 +100,33 @@ export const getApplication = async (req, res) => {
 
 export const getApplicants = async (req , res) => {
 
-    try{
+    try {
 
-        const jobId = req.params.job
+        const jobId = req.params.id;
+
         const job = await Job.findById(jobId).populate({
-            path:"applications",
-            option:{sort:{createAt: -1}},
+            path:'applications',
+            options:{sort:{createdAt:-1}},
             populate:{
-                path:"application",
-                option:{sort:{createAt: -1}}
+                path:'applicant'
             }
         });
 
-        if(!job) {
+        if(!job){
             return res.status(404).json({
-                message: "Job not found",
-                success: false
-            });
+                message:'Job not found or application not found.',
+                success:false
+            })
         };
-
+        
         return res.status(200).json({
-            message: "Applicants fetched successfully",
-            job,
-            success: true
+            job, 
+            success:true
         });
 
-    }catch(err){
+    } catch (error) {
         console.log("error is found in getApplicants controller");
-        console.log(err);
+        console.log(error);
     }
 };
 

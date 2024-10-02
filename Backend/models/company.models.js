@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
     usrId: {
         type: mongoose.SchemaTypes.ObjectId,
         ref: "User",
-        // required: true
+        required: true
     }
 
 }, { timestamps: true });
