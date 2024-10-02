@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@radix-ui/react-select";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@radix-ui/react-select";
 import { Loader2 } from "lucide-react";
 
 const companyArray = [];
@@ -32,7 +32,9 @@ function PostJob() {
     const {companies} = useSelector(store => store.company);
 
     const SubmitHandle = async (e) => {
+
         e.preventDefault();
+
         try{
             setLoading(true);
             const res = await axios.post(`${JOB_API_END_POINT}/post` , input , {
@@ -54,6 +56,7 @@ function PostJob() {
         }finally {
             setLoading(false);
         }
+
     };
 
 

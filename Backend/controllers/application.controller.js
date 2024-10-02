@@ -75,7 +75,7 @@ export const getApplication = async (req, res) => {
 
         if(!application) {
             return res.status(404).json({
-                message: "Application not found",
+                message: "Application not found ",
                 success: false
             });
         };
@@ -153,7 +153,7 @@ export const updateStatus = async (req , res) => {
 
         if(!application) {
             return res.status(404).json({
-                message: "Application not found",
+                message: "Application not found ",
                 success: false
             });
         };
