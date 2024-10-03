@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const CompaniesTable = () => {
+    
     const { companies, searchCompanyByText } = useSelector(store => store.company);
     
     console.log(companies)  // reverse empty array , no companies 
