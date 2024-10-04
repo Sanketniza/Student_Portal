@@ -10,6 +10,7 @@ import UpdateProfileDialog from './UpdateProfileDialog';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import useGetAppliedJobs from '@/hooks/useGetAppliedJobs';
 
 //&------------------------------------------------------------------------------------------
 
@@ -24,8 +25,10 @@ const isResume = true;
 
 function Profile() {
 
+     useGetAppliedJobs(); // * fetching form useGetAppliedJobs hook to update the user applied job status (accept or reject)  
     const[open , setOpen] = useState(false);
     const {user}  = useSelector((store) => store.auth);
+
     
   return (
         <>
