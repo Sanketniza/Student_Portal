@@ -4,7 +4,7 @@ import { Button } from "../ui/button"
 import { Input } from "../ui/input"
 import { Label } from "../ui/label"
 import { RadioGroup } from "@/components/ui/radio-group"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import axios from "axios"
 import { USER_API_END_POINT } from "@/utils/API"
 import { toast } from "sonner"
@@ -26,7 +26,7 @@ function Signup() {
         file: ""
     });
 
-	const {loading} = useSelector(store => store.auth);
+	const {loading , user} = useSelector(store => store.auth);
 	const dispatch = useDispatch();
 	
 	const navigate = useNavigate();
@@ -83,6 +83,13 @@ function Signup() {
 		}
 		
 	};
+
+	useEffect(() => {
+		
+		if(user) {
+			navigate("/");
+		}
+	}, []);
 	
 	return (
 		<>

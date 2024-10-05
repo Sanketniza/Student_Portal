@@ -4,7 +4,7 @@ import { Button } from "../ui/button"
 import { Input } from "../ui/input"
 import { Label } from "../ui/label"
 import { RadioGroup } from "@/components/ui/radio-group"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import axios from "axios"
 import { USER_API_END_POINT } from "@/utils/API"
 import { toast } from "sonner"
@@ -26,7 +26,7 @@ function Login() {
 
 		const navigate = useNavigate();  // this is to redirect to home page after login
 		const dispatch = useDispatch(); // this is to redirect to home page after login.it use for redux toolkit store
-		const {loading} = useSelector(store => store.auth);
+		const {loading , user} = useSelector(store => store.auth);
 
 
     const changeEventHandler = (event) => {
@@ -66,6 +66,13 @@ function Login() {
 		}
 		
 	};
+
+	useEffect(() => {
+		
+		if(user) {
+			navigate("/");
+		}
+	}, []);
 
 	    
     
