@@ -7,7 +7,8 @@ const companySlice = createSlice({
 
     initialState: {
         singleCompany:null,
-        companies: [] ,
+        // companies: [] ,
+        companies:[],
         searchCompanyByText:"",
     },
     

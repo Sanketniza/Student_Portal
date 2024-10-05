@@ -1,6 +1,7 @@
 
 import { useSelector } from "react-redux";
 import LatestJobCards from "./LatestJobCards"
+import { useNavigate } from "react-router-dom";
 //&------------------------------------------------------------------------------------------
 
 // const randomJobs = [ 1,2,3,4,5,6];
@@ -8,6 +9,7 @@ import LatestJobCards from "./LatestJobCards"
 function LatestJobs() {
 
     const {allJobs} = useSelector((store) => store.job);
+    const navigate = useNavigate();
   return (
         <>
             <div className="px-4 mx-auto my-20 max-w-7xl sm:px-6 lg:px-8">  {/*   text-center */}
@@ -21,7 +23,7 @@ function LatestJobs() {
                         allJobs.length <= 0 ? 
                         <h1>No Jobs Found</h1> 
                         : allJobs.slice(0 ,12).map((item) => (
-                            <LatestJobCards key={item._id} item={item}/>
+                            <LatestJobCards  key={item._id} item={item}/>
                         ))
                     }
                 </div>    

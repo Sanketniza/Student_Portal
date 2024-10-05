@@ -18,6 +18,9 @@ function useGetAllCompanies() {
                     withCredentials: true
                 });
 
+                console.log(res.data);
+                console.log("sanket use get all companies",res.data);
+
                 if(res.data.success) {
                     dispatch(setCompanies(res.data.companies));
                 };

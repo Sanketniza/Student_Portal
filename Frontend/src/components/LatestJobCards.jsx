@@ -1,16 +1,18 @@
 import PropTypes from 'prop-types';
 
 import { Badge } from "./ui/badge"
+import { useNavigate } from 'react-router-dom';
 
 // &------------------------------------------------------------------------------------------
 
 function LatestJobCards({item}) {
 
-    // const {allJobs} = useSelector((store) => store.job);
+
+    const navigate = useNavigate();
 
   return (
         <>
-            <div className="p-5 px-10 py-10 border border-gray-300 rounded shadow shadow-2xl cursor-pointer ">
+            <div onClick={() => navigate(`/description/${item._id}`) } className="p-5 px-10 py-10 border border-gray-300 rounded shadow shadow-2xl cursor-pointer ">
 
                 <div>
                      <h1 className="text-2xl font-bold text-zinc-800"> { item?.company?.name} </h1>
@@ -38,12 +40,14 @@ LatestJobCards.propTypes = {
       company: PropTypes.shape({
         name: PropTypes.string.isRequired,
         location: PropTypes.string.isRequired,
+        logo: PropTypes.string.isRequired,
       }).isRequired,
       title: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
       position: PropTypes.string.isRequired,
       jobType: PropTypes.string.isRequired,
       salary: PropTypes.string.isRequired,
+      _id: PropTypes.string.isRequired,
     }).isRequired,
   };
 
