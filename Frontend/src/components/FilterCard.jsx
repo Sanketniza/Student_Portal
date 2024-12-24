@@ -32,7 +32,7 @@ function FilterCard() {
     useEffect(() => {
         // console.log(selectedValue);
         dispatch(setSearchedQuery(selectedValue));
-    }, [selectedValue  ]);
+    }, [selectedValue ]);
     
     return (
         <>

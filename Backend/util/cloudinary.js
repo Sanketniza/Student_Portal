@@ -12,8 +12,7 @@ export default cloudinary;
 
 /* 
   ? Cloudinary हे एक cloud-based media management platform आहे, जे मुख्यत्वे images, videos, आणि अन्य media files चं storage, optimization, 
-  आणि delivery करण्यासाठी वापरलं जातं. MERN stack मध्ये Cloudinary चा वापर images किंवा videos store करण्यासाठी होतो, जेव्हा आपण user uploads manage
-   करतो.
+  आणि delivery करण्यासाठी वापरलं जातं. MERN stack मध्ये Cloudinary चा वापर images किंवा videos store करण्यासाठी होतो, जेव्हा आपण user uploads manage करतो.
  
   * उदाहरणार्थ, एक e-commerce website मध्ये, users त्यांच्या profile साठी images अपलोड करू शकतात किंवा product photos अपलोड करू शकतात. 
    हे images लोकल storage मध्ये save करण्याऐवजी, Cloudinary सारख्या cloud service मध्ये save करून, त्यांचे URLs आपल्या database मध्ये save केले जातात. 
