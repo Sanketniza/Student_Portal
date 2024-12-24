@@ -44,7 +44,7 @@ import cloudinary from "../util/cloudinary.js";
                     profile:{
                         profilephoto: cloudResponse.secure_url,
                         // cloudinary_id: cloudResponse.public_id
-                    }
+                    }                                              
                 });
 
                 return res.status(200).json({
@@ -55,7 +55,7 @@ import cloudinary from "../util/cloudinary.js";
             
     } catch (error) {
        console.log("error is found in register controller");
-    //    console.log(error.User.message);
+       console.log(error.User.message);
     }  
 
   };
